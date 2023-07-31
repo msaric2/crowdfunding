@@ -74,7 +74,6 @@ def readFile(fileName):
     f.close()
 
 
-
 def main():
     #folder with csv fiels downloaded from https://webrobots.io/kickstarter-datasets/
     folder='e:\\work\\clanci\\2021\\crowdfunding\\downloads\\2_21\\'    #18_5_18

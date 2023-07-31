@@ -21,6 +21,7 @@ FOLDER_FAILED_IMAGES="e:\\work\\clanci\\2021\\crowdfunding\\images\\train\\negat
 FOLDER_TEST_SUCCESS_IMAGES="e:\\work\\clanci\\2021\\crowdfunding\\images\\test\\positive\\"
 FOLDER_TEST_FAILED_IMAGES="e:\\work\\clanci\\2021\\crowdfunding\\images\\test\\negative\\"
 
+
 def model_VGG( input_height=256, input_width=256):
     vgg_model = applications.vgg16.VGG16(weights='imagenet',include_top=False,input_shape=(256,256,3))
    # vgg_model=applications.ResNet50(weights='imagenet',include_top=False,input_shape=(256,256,3))
