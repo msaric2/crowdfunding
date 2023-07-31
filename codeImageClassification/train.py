@@ -37,6 +37,7 @@ def model_VGG( input_height=256, input_width=256):
 
 
 def model_VGG_Dropout_top( input_height=256, input_width=256):
+
     vgg_model = applications.vgg16.VGG16(weights='imagenet',include_top=True,input_shape=(256,256,3))
    # vgg_model=applications.ResNet50(weights='imagenet',include_top=False,input_shape=(256,256,3))
     vgg_model.trainable=True

@@ -5,7 +5,7 @@ from sklearn import preprocessing
 import matplotlib.pyplot as plt
 plt.rc("font", size=14)
 from sklearn.linear_model import LogisticRegression
-from sklearn.cross_validation import train_test_split
+#from sklearn.cross_validation import train_test_split
 import seaborn as sns
 import statsmodels.api as sm
 import os
@@ -14,10 +14,10 @@ import scipy.stats  as stats
 
 def descriptiveStatistics(var):
     # calculate descriptive statistics
-    print data2[var].mean()
-    print data2[var].std()
-    print data2[var].min()
-    print data2[var].max()
+    print(data2[var].mean())
+    print(data2[var].std())
+    print (data2[var].min())
+    print (data2[var].max())
 
 sns.set(style="white")
 sns.set(style="whitegrid", color_codes=True)
@@ -34,7 +34,8 @@ sns.set(style="whitegrid", color_codes=True)
 #     if counter>5:
 #         break
 # data=pd.concat
-data = pd.read_csv('selectedCEEv2.csv', header=0)  #'download/18_5_18/Kickstarter001.csv'
+#data = pd.read_csv('selectedCEEv2.csv', header=0)  #'download/18_5_18/Kickstarter001.csv'
+data = pd.read_csv('CampaignsHR_06_22.csv', header=0)
 #data = data.dropna()
 print(data.shape)
 print(list(data.columns))
