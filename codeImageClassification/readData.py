@@ -1,3 +1,5 @@
+#Script to download prfile images of Kickstarter campaigns. Code reads links in kickstarter dataset downoladed from https://webrobots.io/kickstarter-datasets/
+
 import csv
 import sys
 import os
@@ -9,8 +11,8 @@ import glob
 import os.path as osp
 import cv2
 
-positive_train_samples_folder='e:/work/clanci/2021/crowdfunding/images/train/positive/'
-negative_train_samples_folder='e:/work/clanci/2021/crowdfunding/images/train/negative/'
+positive_train_samples_folder='c:/work/crowdfunding/codeImageClassification/'       #'e:/work/clanci/2021/crowdfunding/images/train/positive/'
+negative_train_samples_folder='c:/work/crowdfunding/codeImageClassification/'   #   'e:/work/clanci/2021/crowdfunding/images/train/negative/'
 
 positive_test_samples_folder='e:/work/clanci/2021/crowdfunding/images/test/positive/'
 negative_test_samples_folder='e:/work/clanci/2021/crowdfunding/images/test/negative/'
@@ -20,8 +22,7 @@ counter_positive=0
 counter_negative=0
 
 def move_images(source_dir,target_dir):
-    # source_dir = positive_train_samples_folder
-    # target_dir = positive_test_samples_folder
+
     file_names = os.listdir(source_dir)
     N_images =int(0.8 * len(file_names))
     for file_name in file_names[-N_images:]:
@@ -29,6 +30,7 @@ def move_images(source_dir,target_dir):
 
 
 def move_corrupted_images(source_dir,target_dir):
+    # utility fo filter corrupted images
     file_names = os.listdir(source_dir)
     file_names=glob.glob(osp.join(source_dir, '*.png'))
     for file_name in file_names:
@@ -37,7 +39,6 @@ def move_corrupted_images(source_dir,target_dir):
             shutil.move(os.path.join(source_dir, file_name), target_dir)
 
 def readFile(fileName):
-    #f = open("download/18_5_18/Kickstarter039.csv", "rb")
     f = open(fileName, "r",encoding="utf8")
     reader = csv.reader(f)
     counter_row=0
@@ -49,11 +50,6 @@ def readFile(fileName):
             launched_index=row.index('launched_at')
             counter_row = counter_row + 1
             continue
-        #start=row[25].find("full")
-        #if(start<0):
-        #     continue
-        # end = row[25][start:].find('","ed":')
-        # link=row[25][start+7:end]
 
         l = row[photo_index].split('"')
         link=l[7]
@@ -75,28 +71,18 @@ def readFile(fileName):
         if counter_row%10==0:
             print(counter_row)
         counter_row=counter_row+1
-
-    # next(reader)
-    # for row in reader:
-    #     rowsEasternCentralEurope.append(row)
-    #answer=[value for value in row if value in countriesEasternCentralEurope]
     f.close()
 
 
 def main():
+    #folder with csv fiels downloaded from https://webrobots.io/kickstarter-datasets/
     folder='e:\\work\\clanci\\2021\\crowdfunding\\downloads\\2_21\\'    #18_5_18
     listing = os.listdir(folder)
-    #move_images(positive_train_samples_folder,positive_test_samples_folder)
-    #move_corrupted_images(positive_train_samples_folder,'e:\\work\\clanci\\2021\\crowdfunding\\images\\train\\positive_corrupted\\')
-    #move_corrupted_images(negative_train_samples_folder,'e:\\work\\clanci\\2021\\crowdfunding\\images\\train\\negative_corrupted\\')
-
-    #move_corrupted_images(positive_test_samples_folder,'e:\\work\\clanci\\2021\\crowdfunding\\images\\test\\positive_corrupted\\')
-    move_corrupted_images(negative_test_samples_folder,'e:\\work\\clanci\\2021\\crowdfunding\\images\\test\\negative_corrupted\\')
 
     # download images
-    #for file in listing:
-    #    print(counter)
-    #     readFile(folder+file)
+    for file in listing:
+        print(counter)
+        readFile(folder+file)
 if __name__ == '__main__':
     main()
 
