@@ -213,5 +213,6 @@ def train():
                                                       TensorBoard(log_dir='./logs/v14', write_images=1, write_graph=1),
                                                       es, rop])
 
+
 if __name__ == '__main__':
     train()

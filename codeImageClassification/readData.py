@@ -21,6 +21,9 @@ counter=0
 counter_positive=0
 counter_negative=0
 
+#folder with csv fiels downloaded from https://webrobots.io/kickstarter-datasets/
+folder='e:\\work\\clanci\\2021\\crowdfunding\\downloads\\2_21\\'
+
 def move_images(source_dir,target_dir):
 
     file_names = os.listdir(source_dir)
@@ -75,8 +78,7 @@ def readFile(fileName):
 
 
 def main():
-    #folder with csv fiels downloaded from https://webrobots.io/kickstarter-datasets/
-    folder='e:\\work\\clanci\\2021\\crowdfunding\\downloads\\2_21\\'    #18_5_18
+     #18_5_18
     listing = os.listdir(folder)
 
     # download images
